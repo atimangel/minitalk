@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 14:27:20 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/16 13:44:24 by snpark           ###   ########.fr       */
+/*   Created: 2020/12/25 10:39:36 by snpark            #+#    #+#             */
+/*   Updated: 2020/12/30 12:37:08 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int		main(int arg_i, char **arg_s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	pid;
+	char	*sub;
+	size_t	i;
 
-	if (arg_i == 3)
+	i = 0;
+	if (!s)
+		return (0);
+	if (!(sub = (char *)malloc(len + 1)))
+		return (0);
+	while (ft_strlen(s) >= start && s[i + start] && i < len)
 	{
-		pid = ft_atoi(arg_s[1]);
-		ft_putnbr(pid);
-		write(1, arg_s[2], ft_strlen(arg_s[2]));
+		sub[i] = s[i + start];
+		i++;
 	}
-	return (0);
-	//take from server as parameter
-	//pid
-	//string
+	sub[i] = '\0';
+	return (sub);
 }

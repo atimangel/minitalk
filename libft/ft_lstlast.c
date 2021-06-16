@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 14:27:20 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/16 13:44:24 by snpark           ###   ########.fr       */
+/*   Created: 2020/12/28 10:28:57 by snpark            #+#    #+#             */
+/*   Updated: 2021/06/16 13:40:15 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int		main(int arg_i, char **arg_s)
+t_list	*ft_lstlast(t_list *lst)
 {
-	int	pid;
-
-	if (arg_i == 3)
-	{
-		pid = ft_atoi(arg_s[1]);
-		ft_putnbr(pid);
-		write(1, arg_s[2], ft_strlen(arg_s[2]));
-	}
-	return (0);
-	//take from server as parameter
-	//pid
-	//string
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

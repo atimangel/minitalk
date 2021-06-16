@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 14:27:20 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/16 13:44:24 by snpark           ###   ########.fr       */
+/*   Created: 2020/12/25 11:20:03 by snpark            #+#    #+#             */
+/*   Updated: 2020/12/28 14:47:30 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int		main(int arg_i, char **arg_s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	pid;
+	char	*join;
+	size_t	join_len;
 
-	if (arg_i == 3)
-	{
-		pid = ft_atoi(arg_s[1]);
-		ft_putnbr(pid);
-		write(1, arg_s[2], ft_strlen(arg_s[2]));
-	}
-	return (0);
-	//take from server as parameter
-	//pid
-	//string
+	if (!s1 || !s2)
+		return (0);
+	join_len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	if (!(join = (char *)malloc(join_len)))
+		return (0);
+	ft_bzero(join, join_len);
+	ft_strlcpy(join, s1, ft_strlen(s1) + 1);
+	ft_strlcat(join, s2, join_len);
+	return (join);
 }

@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 14:27:20 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/16 13:44:24 by snpark           ###   ########.fr       */
+/*   Created: 2020/12/26 15:32:32 by snpark            #+#    #+#             */
+/*   Updated: 2020/12/27 18:56:47 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int		main(int arg_i, char **arg_s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	pid;
+	char				*mapi;
+	unsigned int		i;
 
-	if (arg_i == 3)
+	if (!s || !f)
+		return (0);
+	i = 0;
+	if (!(mapi = ft_strdup(s)))
+		return (0);
+	while (mapi[i])
 	{
-		pid = ft_atoi(arg_s[1]);
-		ft_putnbr(pid);
-		write(1, arg_s[2], ft_strlen(arg_s[2]));
+		mapi[i] = f(i, mapi[i]);
+		i++;
 	}
-	return (0);
-	//take from server as parameter
-	//pid
-	//string
+	return (mapi);
 }

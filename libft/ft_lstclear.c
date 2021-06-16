@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 14:27:20 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/16 13:44:24 by snpark           ###   ########.fr       */
+/*   Created: 2020/12/28 11:01:55 by snpark            #+#    #+#             */
+/*   Updated: 2021/06/16 13:41:04 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int		main(int arg_i, char **arg_s)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	pid;
+	t_list *tmp;
 
-	if (arg_i == 3)
+	if (!lst)
+		return ;
+	if (!*lst)
+		return ;
+	while (*lst)
 	{
-		pid = ft_atoi(arg_s[1]);
-		ft_putnbr(pid);
-		write(1, arg_s[2], ft_strlen(arg_s[2]));
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
-	return (0);
-	//take from server as parameter
-	//pid
-	//string
+	lst = NULL;
 }

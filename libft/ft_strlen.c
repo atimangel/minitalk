@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: snpark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 14:27:20 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/16 13:44:24 by snpark           ###   ########.fr       */
+/*   Created: 2020/12/22 16:00:11 by snpark            #+#    #+#             */
+/*   Updated: 2020/12/24 09:23:23 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int		main(int arg_i, char **arg_s)
+size_t	ft_strlen(const char *str)
 {
-	int	pid;
+	size_t len;
 
-	if (arg_i == 3)
-	{
-		pid = ft_atoi(arg_s[1]);
-		ft_putnbr(pid);
-		write(1, arg_s[2], ft_strlen(arg_s[2]));
-	}
-	return (0);
-	//take from server as parameter
-	//pid
-	//string
+	len = 0;
+	while (str && str[len] != '\0')
+		len++;
+	return (len);
 }
+
+/*
+**count string lenth
+**str - string to count
+**return - lenth of string as size_t
+*/
