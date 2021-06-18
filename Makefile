@@ -6,25 +6,27 @@
 #    By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/16 13:44:48 by snpark            #+#    #+#              #
-#    Updated: 2021/06/16 13:51:00 by snpark           ###   ########.fr        #
+#    Updated: 2021/06/18 16:46:11 by snpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-all: $(NAME)
+NAME = server
 
-$(NAME): server client
+all: $(NAME) client
 
-client: libft
-	gcc -o client client.c utils.c -l ft -L libft -I libft
-
-server: libft
-	gcc -o server server.c utils.c -l ft -L libft -I libft
-
-libft:
+$(NAME):
 	make -C libft
+	gcc -o server.out server.c utils.c -l ft -L libft -I libft
+
+client:
+	make -C libft
+	gcc -o client.out client.c utils.c -l ft -L libft -I libft
 
 clean:
+	rm libft/*.o
 
-fclean:
+fclean: clean
+	rm libft/*.a
+	rm *.out
 
-re: fclean all
+re: fclean all client
