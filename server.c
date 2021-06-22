@@ -6,25 +6,25 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 14:27:02 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/22 19:40:44 by senoi            ###   ########.fr       */
+/*   Updated: 2021/06/22 19:54:00 by senoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static char_buf_t buf
+static char_buf_t buf_g;
 
 void	handle_signal(int sig)
 {
-	buf.c = buf.c << 1;
-	buf.i++;
+	buf_g.c = buf_g.c << 1;
+	buf_g.i++;
 	if (sig == SIGUSR2)
-		buf.c++;
-	if (i == 8)
+		buf_g.c++;
+	if (buf_g.i == 8)
 	{
-		write(1, &buf.c, 1);
-		buf.c = 0;
-		buf.i = 0;
+		write(1, &buf_g.c, 1);
+		buf_g.c = 0;
+		buf_g.i = 0;
 	}
 }
 
