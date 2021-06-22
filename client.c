@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 14:27:20 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/22 15:36:00 by senoi            ###   ########.fr       */
+/*   Updated: 2021/06/22 19:30:46 by senoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@ int		send(int pid, char *message)
 			if ((c >> (7 - i)) % 2 == 1)
 			{
 				kill(pid, SIGUSR2);
-				write(1, "1", 1);
+			//	write(1, "1", 1);
 			}
 			else
 			{
 				kill(pid, SIGUSR1);
-				write(1, "0", 1);
+			//	write(1, "0", 1);
 			}
 			i++;
+			usleep(100);
 		}
 		message++;
 	}
