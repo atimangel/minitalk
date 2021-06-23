@@ -32,8 +32,10 @@ int		main(void)
 {
 	pid_t		pid;
 
-	signal(SIGUSR1, handle_signal);
-	signal(SIGUSR2, handle_signal);
+	if (signal(SIGUSR1, handle_signal) == SIG_ERR)
+		error("signal handler setting error | SIGUSR1\n");
+	if (signal(SIGUSR2, handle_signal) == SIG_ERR)
+		error("signal handler setting error | SIGUSR2\n");
 	pid = getpid();
 	ft_putnbr(pid);
 	write(1, "\n", 1);

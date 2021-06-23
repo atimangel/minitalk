@@ -26,3 +26,10 @@ void	ft_putnbr(int n)
 		c = '0' - (n % 10);
 	write(1, &c, 1);
 }
+
+void	error(char *msg)
+{
+	write(0, "Error\n", 6);
+	ft_putstr_fd(msg, 0);
+	exit(0);
+}

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <stdio.h>
 
 int		send(int pid, char *message)
 {
@@ -26,16 +25,16 @@ int		send(int pid, char *message)
 		{
 			if ((c >> (7 - i)) % 2 == 1)
 			{
-				kill(pid, SIGUSR2);
-			//	write(1, "1", 1);
+				if (kill(pid, SIGUSR2) == -1)
+					error("kill error\n");
 			}
 			else
 			{
-				kill(pid, SIGUSR1);
-			//	write(1, "0", 1);
+				if (kill(pid, SIGUSR1) == -1)
+					error("kill error\n");
 			}
 			i++;
-			usleep(100);
+			usleep(50);
 		}
 		message++;
 	}
@@ -50,10 +49,7 @@ int		main(int arg_i, char **arg_s)
 	{
 		pid = ft_atoi(arg_s[1]);
 		if (kill(pid, 0) == -1)
-		{
-			write(1, "Error\n", 6);
-			exit(1);
-		}
+			error("It's not significant PID\n");
 		send(pid, arg_s[2]);
 	}
 	return (0);
