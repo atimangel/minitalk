@@ -21,8 +21,8 @@ client: libft.a
 	gcc -o client client.c utils.c -l ft -L libft -I libft
 
 bonus : libft.a
-	gcc -o server_bonus server_bonus.c utils.c -l ft -L libft -I libft
-	gcc -o client_bonus client_bonus.c utils.c -l ft -L libft -I libft
+	gcc -o server_bonus server_bonus.c utils_bonus.c -l ft -L libft -I libft
+	gcc -o client_bonus client_bonus.c utils_bonus.c -l ft -L libft -I libft
 
 clean:
 	rm libft/*.o
@@ -30,7 +30,7 @@ clean:
 libft.a:
 	make -C libft
 
-fclean: clean
-	rm libft/*.a client server client_bonus server_bonus
+fclean:
+	rm libft/*.o libft/*.a client server client_bonus server_bonus
 
 re: fclean all client
