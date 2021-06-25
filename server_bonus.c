@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 14:27:02 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/25 12:18:13 by snpark           ###   ########.fr       */
+/*   Updated: 2021/06/25 12:21:28 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		handle_signal(int sig)
 	kill(g_buf.pid, SIGUSR2);
 	if (g_buf.count == g_buf.len)
 	{
-		write(1, (wchar_t *)g_buf.str, g_buf.len);
+		write(1, g_buf.str, g_buf.len);
 		write(1, "\n", 1);
 		g_buf.i = 0;
 		g_buf.len = 0;

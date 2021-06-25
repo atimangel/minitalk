@@ -6,27 +6,11 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 16:13:39 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/25 11:40:08 by snpark           ###   ########.fr       */
+/*   Updated: 2021/06/25 12:21:05 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
-
-int		ft_watoi(wchar_t *str)
-{
-	int nbr;
-
-	nbr = 0;
-	while (*str)
-	{
-		nbr *= 10;
-		nbr += *str - L'0';
-		if (nbr < 0)
-			return (-1);
-		str++;
-	}
-	return (nbr);
-}
 
 void	ft_putnbr(int n)
 {
