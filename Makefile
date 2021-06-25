@@ -11,18 +11,20 @@
 # **************************************************************************** #
 
 NAME = server
+LEAK = -fsanitize=address
+CFLAG = -Wall -Werror -Wextra
 
 all: $(NAME) client
 
 $(NAME): libft.a
-	gcc -o server server.c utils.c -l ft -L libft -I libft
+	gcc -o server $(LEAK) $(CFLAG) server.c utils.c -l ft -L libft -I libft
 
 client: libft.a
-	gcc -o client client.c utils.c -l ft -L libft -I libft
+	gcc -o client $(LEAK) $(CFLAG) client.c utils.c -l ft -L libft -I libft
 
 bonus : libft.a
-	gcc -o server_bonus server_bonus.c utils_bonus.c -l ft -L libft -I libft
-	gcc -o client_bonus client_bonus.c utils_bonus.c -l ft -L libft -I libft
+	gcc -o server_bonus $(LEAK) $(CFLAG) server_bonus.c utils_bonus.c -l ft -L libft -I libft
+	gcc -o client_bonus $(LEAK) $(CFLAG) client_bonus.c utils_bonus.c -l ft -L libft -I libft
 
 clean:
 	rm libft/*.o

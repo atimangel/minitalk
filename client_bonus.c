@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 14:27:20 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/22 19:30:46 by senoi            ###   ########.fr       */
+/*   Updated: 2021/06/25 12:16:42 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void		server_status(int sig)
 		;
 }
 
-int		send(int pid, char *message)
+void		send(int pid, char *message)
 {
-	int	i;
+	int		i;
 	char	c;
 
 	while (*message)
@@ -47,10 +47,9 @@ int		send(int pid, char *message)
 		}
 		message++;
 	}
-	return (1);
 }
 
-int		send_num(pid_t pid, int num)
+void		send_num(pid_t pid, int num)
 {
 	char len;
 
@@ -72,7 +71,7 @@ int		send_num(pid_t pid, int num)
 	usleep(100);
 }
 
-int		main(int arg_i, wchar_t **arg_s)
+int			main(int arg_i, char **arg_s)
 {
 	pid_t	pid;
 

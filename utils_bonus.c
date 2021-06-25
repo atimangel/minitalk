@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 16:13:39 by snpark            #+#    #+#             */
-/*   Updated: 2021/06/16 13:43:51 by snpark           ###   ########.fr       */
+/*   Updated: 2021/06/25 11:40:08 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-
-int	ft_watoi(wchar_t *str)
+int		ft_watoi(wchar_t *str)
 {
 	int nbr;
 
@@ -22,7 +21,7 @@ int	ft_watoi(wchar_t *str)
 	{
 		nbr *= 10;
 		nbr += *str - L'0';
-		if  (nbr < 0)
+		if (nbr < 0)
 			return (-1);
 		str++;
 	}
